@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
   <div class="noise"></div>
 
   <header class="header">
@@ -31,6 +32,7 @@
 
   <main id="top">
     <section class="hero">
+      <canvas class="hero-particles" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <p class="eyebrow">КИНОШКОЛА · СОЧИ</p>
         <h1>ТВОЯ<br><span>ИСТОРИЯ</span><br>НАЧИНАЕТСЯ ЗДЕСЬ</h1>
@@ -297,32 +299,45 @@
       </div>
     </section>
 
-    <section class="section results reveal">
-      <div class="section-head row">
-        <div>
-          <p class="eyebrow">02.1 / НАШИ РЕЗУЛЬТАТЫ</p>
-          <h2>ВЫХОДИМ<br><span>НА УРОВЕНЬ.</span></h2>
-        </div>
-        <p class="section-note">Кадры со съёмок и выступлений, названия проектов и площадок, отзывы родителей и учеников.</p>
+ <section class="section results reveal">
+  <div class="section-head row">
+    <div>
+      <p class="eyebrow">02.1 / НАШИ РЕЗУЛЬТАТЫ</p>
+      <h2>ВЫХОДИМ<br><span>НА УРОВЕНЬ.</span></h2>
+    </div>
+    <p class="section-note">Кадры со съёмок и выступлений, названия проектов и площадок, отзывы родителей и учеников.</p>
+  </div>
+
+  <div class="carousel" data-carousel>
+    <div class="carousel-viewport">
+      <div class="carousel-track" data-track>
+        <figure class="carousel-slide image-placeholder"><span>PHOTO 01</span></figure>
+        <figure class="carousel-slide image-placeholder"><span>PHOTO 02</span></figure>
+        <figure class="carousel-slide image-placeholder"><span>PHOTO 03</span></figure>
+        <figure class="carousel-slide image-placeholder"><span>PHOTO 04</span></figure>
+        <figure class="carousel-slide image-placeholder"><span>PHOTO 05</span></figure>
+        <figure class="carousel-slide image-placeholder"><span>PHOTO 06</span></figure>
       </div>
-      <div class="gallery-grid">
-        <div class="g-photo tall image-placeholder"><span>PHOTO 01</span></div>
-        <div class="g-photo image-placeholder"><span>PHOTO 02</span></div>
-        <div class="g-photo image-placeholder"><span>PHOTO 03</span></div>
-        <div class="g-photo wide image-placeholder"><span>PHOTO 04</span></div>
-        <div class="g-photo image-placeholder"><span>PHOTO 05</span></div>
-      </div>
-      <div class="reviews">
-        <blockquote>
-          <p>«Ребёнок стал уверенным, перестал бояться камеры. Уже снялся в двух проектах.»</p>
-          <cite>— родитель ученика</cite>
-        </blockquote>
-        <blockquote>
-          <p>«Здесь не просто занятия — здесь настоящая команда и реальная практика.»</p>
-          <cite>— ученица школы</cite>
-        </blockquote>
-      </div>
-    </section>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" data-prev aria-label="Назад">←</button>
+      <div class="carousel-dots" data-dots></div>
+      <button class="carousel-btn" data-next aria-label="Вперёд">→</button>
+    </div>
+  </div>
+
+  <div class="reviews">
+    <blockquote>
+      <p>«Ребёнок стал уверенным, перестал бояться камеры. Уже снялся в двух проектах.»</p>
+      <cite>— родитель ученика</cite>
+    </blockquote>
+    <blockquote>
+      <p>«Здесь не просто занятия — здесь настоящая команда и реальная практика.»</p>
+      <cite>— ученица школы</cite>
+    </blockquote>
+  </div>
+</section>
 
     <section class="section showreel reveal" id="media">
       <div class="showreel-copy">
@@ -387,6 +402,8 @@
     <a href="#top">НАВЕРХ ↑</a>
   </footer>
 
+  <div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
   <script src="script.js"></script>
 </body>
 </html>

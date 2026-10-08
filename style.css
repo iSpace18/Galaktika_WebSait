@@ -15,6 +15,7 @@
 }
 
 * {
+transition: 0.5 ease;
     box-sizing: border-box
 }
 
@@ -272,12 +273,12 @@ footer a:hover {
 }
 
 .ticker div {
-    animation: move 24s linear infinite
+    animation: move 25s linear infinite
 }
 
 @keyframes move {
     to {
-        transform: translateX(-35%)
+        transform: translateX(100%)
     }
 }
 
@@ -318,7 +319,7 @@ footer a:hover {
 .about-copy>p:not(.lead) {
     color: var(--muted);
     line-height: 1.7;
-    max-width: 600px
+    max-width: 600"px
 }
 
 .facts {
@@ -1043,3 +1044,157 @@ footer a {
     .direction-detail h3 { font-size: 22px; }
     .reviews blockquote p { font-size: 16px; }
 }
+/* ---------- Карусель результатов ---------- */
+.carousel {
+  position: relative;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 12px;
+  transition: transform .6s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+
+.carousel-slide {
+  flex: 0 0 calc((100% - 24px) / 3);   /* 3 карточки в ряд, 2 зазора по 12px */
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  border: 1px solid var(--line);
+}
+
+/* Точки */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.carousel-btn {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: .25s;
+}
+.carousel-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  background: #3a393c;
+  cursor: pointer;
+  transition: .25s;
+}
+.carousel-dot.is-active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* Адаптация */
+@media (max-width: 850px) {
+  .carousel-slide {
+    flex: 0 0 calc((100% - 12px) / 2);   /* 2 карточки */
+  }
+}
+@media (max-width: 560px) {
+  .carousel-slide {
+    flex: 0 0 100%;                       /* 1 карточка */
+  }
+  .carousel-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none; }
+
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+    mix-blend-mode: difference;
+  }
+  .cursor-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    width: 34px; height: 34px;
+    border: 1px solid var(--fg);
+    transform: translate(-50%, -50%);
+    transition: width .3s ease, height .3s ease, background .3s ease, border-color .3s;
+  }
+  .cursor-ring.is-hover {
+    width: 64px; height: 64px;
+    background: rgba(216, 255, 54, .12);
+    border-color: var(--accent);
+  }
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .8;
+}
+.hero-copy, .hero-visual {
+  position: relative;
+  z-index: 1;
+}
+.direction-card {
+  position: relative;
+  overflow: hidden;
+}
+.direction-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%),
+              rgba(216,255,54,.16), transparent 60%);
+  opacity: 0;
+  transition: opacity .35s;
+  pointer-events: none;
+}
+.direction-card:hover::before { opacity: 1; }
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  z-index: 1000;
+  transition: width .1s linear;
+}
+
